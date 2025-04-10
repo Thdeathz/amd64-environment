@@ -1,0 +1,22 @@
+{
+  "name": "Docker in Docker (Ubuntu AMD64)",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".",
+    "args": {
+      "JAVA_VERSION": "17",
+      "NODE_VERSION": "16.20.0",
+      "GO_VERSION": "1.23.8"
+    }
+  },
+  "runArgs": [
+    "--privileged",
+    "--add-host=host.docker.internal:host-gateway"
+  ],
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
+  "containerEnv": {
+  },
+  "remoteUser": "vscode"
+}
